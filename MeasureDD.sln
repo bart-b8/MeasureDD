@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasureDD", "MeasureDD.csproj", "{1A29CB09-9A3F-4F2F-B3EF-2F9EBA8F740C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasureDD.Tests", "MeasureDD.Tests\MeasureDD.Tests.csproj", "{EB1AE81B-E644-46A3-BAB4-FEE31B66C1D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A29CB09-9A3F-4F2F-B3EF-2F9EBA8F740C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A29CB09-9A3F-4F2F-B3EF-2F9EBA8F740C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A29CB09-9A3F-4F2F-B3EF-2F9EBA8F740C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A29CB09-9A3F-4F2F-B3EF-2F9EBA8F740C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1AE81B-E644-46A3-BAB4-FEE31B66C1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1AE81B-E644-46A3-BAB4-FEE31B66C1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1AE81B-E644-46A3-BAB4-FEE31B66C1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1AE81B-E644-46A3-BAB4-FEE31B66C1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
