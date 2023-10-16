@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-using MeasureDD;
+// using MeasureDD;
 
 [assembly: InternalsVisibleTo("MeasureDD.Tests")]
 
@@ -63,7 +63,7 @@ public static class RequestHandler
 {
   public static Request ReadRequestString(string[] rl)
   {
-    if (rl.Length != 10)
+    if (rl.Length != 11)
     {
       throw new ArgumentException("Number of fields in the read input is incorrect.", nameof(rl));
     }
@@ -119,11 +119,6 @@ public static class RequestHandler
 
   Found:
     throw new ArgumentException("Input data for Request is corrupted.", nameof(rl));
-  }
-
-  public static string PrintFilePath()
-  {
-    return Context.filePath;
   }
 
   public static IEnumerable<Request> GetRequests()

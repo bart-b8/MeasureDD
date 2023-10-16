@@ -36,7 +36,7 @@ public class UnitTest_ReadRequests
   }
 
   [Fact]
-  public void CheckUse_Basic()
+  public void CheckUse_RequestBasic()
   {
     Request rq = new(1, contact, true, true);
     Assert.Equal(1, rq._id);
@@ -49,14 +49,19 @@ public class UnitTest_ReadRequests
     Assert.True(rq._moneyWillBeSent);
   }
     // Request request = new(1, contact, true, true);
+
+  [Fact]
+  public void CheckUse_ReadRequest()
+  {
+    string input1 = "1\tBart Decoutere\temail@email.email\tAdress Street\t42\t3232\t\t\tHZC\ttrue\ttrue";
+    string[] input2 = input1.Split("\t");
+    Request rq = new(1, contact, true, true);
+    Request rq2 = RequestHandler.ReadRequestString(input2);
+
+    Assert.Equal(rq, rq2);
+  }
 }
 
 public class UnitTest_Context
 {
-  [Fact]
-  public void Check_PrintFilePath()
-  {
-    string file = RequestHandler.PrintFilePath();
-    Assert.Equal("./files/requests.txt", file);
-  }
 }
