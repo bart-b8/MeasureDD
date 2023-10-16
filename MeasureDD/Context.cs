@@ -1,4 +1,4 @@
-namespace Context;
+namespace MeasureDD;
 
 public static class Context
 {
