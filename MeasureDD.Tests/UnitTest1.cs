@@ -50,3 +50,13 @@ public class UnitTest_ReadRequests
   }
     // Request request = new(1, contact, true, true);
 }
+
+public class UnitTest_Context
+{
+  [Fact]
+  public void Check_PrintFilePath()
+  {
+    string file = RequestHandler.PrintFilePath();
+    Assert.Equal("./files/requests.txt", file);
+  }
+}

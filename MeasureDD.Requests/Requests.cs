@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
+using MeasureDD;
+
 [assembly: InternalsVisibleTo("MeasureDD.Tests")]
 
 namespace MeasureDD.Requests;
@@ -117,6 +119,11 @@ public static class RequestHandler
 
   Found:
     throw new ArgumentException("Input data for Request is corrupted.", nameof(rl));
+  }
+
+  public static string PrintFilePath()
+  {
+    return Context.filePath;
   }
 
   public static IEnumerable<Request> GetRequests()
