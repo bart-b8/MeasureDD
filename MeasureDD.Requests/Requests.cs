@@ -21,6 +21,16 @@ public class Request
     _numbersAreChecked = numbersChecked;
     _moneyWillBeSent = moneyWillBeSent;
   }
+
+  public static string Header()
+  {
+    return "ID\tName Requestor\tEmail Requestor\tAdress\t\tPostCode\tPlace\tCountry\tSail Club\tNumbersChecked\tMoneywillbesent";
+  }
+
+  public override string ToString()
+  {
+
+  }
 }
 
 public record struct Contact
@@ -119,6 +129,11 @@ public static class RequestHandler
 
   Found:
     throw new ArgumentException("Input data for Request is corrupted.", nameof(rl));
+  }
+
+  public static void WriteRequest(Request rq)
+  {
+    throw new NotImplementedException();
   }
 
   public static IEnumerable<Request> GetRequests()

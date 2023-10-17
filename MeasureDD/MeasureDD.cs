@@ -11,6 +11,8 @@ foreach (string c in b)
 }
 
 Request rq = RequestHandler.ReadRequestString(b);
+Console.WriteLine(Request.Header());
 Console.WriteLine(rq);
+
 
 
