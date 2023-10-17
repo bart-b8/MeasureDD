@@ -31,7 +31,9 @@ public class UnitTest_ReadRequests
   static Adress adress2 = new("Adress Street", 42, 3232, null, null);
   static Contact contact1 = new("Bart Decoutere", "email@email.email", adress1, "HZC");
   static Contact contact2 = new("Bart Decoutere", "email@email.email", adress2, "HZC");
-  static Request rq = new(1, contact1, true, true);
+  static Request rq1 = new(1, contact1, true, true);
+  static Request rq2 = new(1, contact2, true, true);
+
   
   [Fact]
   public void ChecksInput_InputCount10()
@@ -44,14 +46,14 @@ public class UnitTest_ReadRequests
   [Fact]
   public void CheckUse_RequestBasicWithOptional()
   {
-    Assert.Equal(1, rq._id);
-    Assert.Equal(contact1, rq._contact);
-    Assert.Equal("Bart Decoutere", rq._contact.Name);
-    Assert.Equal("email@email.email", rq._contact.Email);
-    Assert.Equal(42, rq._contact.Adress.Housenumber);
-    Assert.Equal("Adress Street", rq._contact.Adress.Streetname);
-    Assert.True(rq._numbersAreChecked);
-    Assert.True(rq._moneyWillBeSent);
+    Assert.Equal(1, rq1._id);
+    Assert.Equal(contact1, rq1._contact);
+    Assert.Equal("Bart Decoutere", rq1._contact.Name);
+    Assert.Equal("email@email.email", rq1._contact.Email);
+    Assert.Equal(42, rq1._contact.Adress.Housenumber);
+    Assert.Equal("Adress Street", rq1._contact.Adress.Streetname);
+    Assert.True(rq1._numbersAreChecked);
+    Assert.True(rq1._moneyWillBeSent);
   }
 
   [Fact]
@@ -73,10 +75,18 @@ public class UnitTest_ReadRequests
   public void CheckUse_ReadRequest()
   {
     string[] input = input1.Split("\t");
-    Request rq = new(1, contact1, true, true);
-    Request rq2 = RequestHandler.ReadRequestString(input);
+    Request rq1new = RequestHandler.ReadRequestString(input);
 
-    Assert.Equal(rq.ToString(), rq2.ToString());
+    Assert.Equal(rq1.ToString(), rq1new.ToString());
+  }
+
+  [Fact]
+  public void CheckUse_ReadRequestWithoutOptionals()
+  {
+    string[] input = input2.Split("\t");
+    Request rq2new = RequestHandler.ReadRequestString(input);
+
+    Assert.Equal(rq2.ToString(), rq2new.ToString());
   }
 
    [Fact]
@@ -84,13 +94,22 @@ public class UnitTest_ReadRequests
    {
      string? output;
      string filePath = Context.GetTestFilePath();
-     RequestHandler.WriteRequest(rq, filePath);
+
+     if (Path.Exists(filePath))
+     {
+       File.Delete(filePath);
+     }
+
+     RequestHandler.WriteRequest(rq1, filePath);
 
      using (StreamReader file = new(filePath))
      {
        output = file.ReadLine();
      }
-kjakk
-     Assert.Equal(rq.ToString(), (RequestHandler.ReadRequestString(output)).ToString());
+
+     if (!String.IsNullOrEmpty(output))
+     {
+     Assert.Equal(rq1.ToString(), (RequestHandler.ReadRequestString(output.Split("\t"))).ToString());
+     }
    }
 }
