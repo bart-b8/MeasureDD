@@ -29,7 +29,7 @@ public class Request
 
   public override string ToString()
   {
-
+    return $"{this._id}\t{this._contact.Name}\t{this._contact.Email}\t{this._contact.Adress.Streetname}\t{this._contact.Adress.Housenumber}\t{this._contact.Adress.Postcode}\t{this._contact.Adress.Place}\t{this._contact.Adress.Country}\t{this._contact.Sailclub}\t{this._numbersAreChecked}\t{this._moneyWillBeSent}";
   }
 }
 
@@ -131,7 +131,7 @@ public static class RequestHandler
     throw new ArgumentException("Input data for Request is corrupted.", nameof(rl));
   }
 
-  public static void WriteRequest(Request rq)
+  public static void WriteRequest(Request rq, string path)
   {
     throw new NotImplementedException();
   }
@@ -139,7 +139,7 @@ public static class RequestHandler
   public static IEnumerable<Request> GetRequests()
   {
     string? line;
-    using (var reader = File.OpenText(Context.filePath))
+    using (var reader = File.OpenText(Context.GetFilePath()))
     {
       while ((line = reader.ReadLine()) != null)
       {
