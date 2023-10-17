@@ -133,7 +133,10 @@ public static class RequestHandler
 
   public static void WriteRequest(Request rq, string path)
   {
-    throw new NotImplementedException();
+    using (StreamWriter file = File.AppendText(path))
+    {
+      file.WriteLine(rq.ToString());
+    }
   }
 
   public static IEnumerable<Request> GetRequests()
