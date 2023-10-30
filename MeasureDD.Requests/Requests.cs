@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
+// using System.Runtime.CompilerServices;
 
 // using MeasureDD;
 
-[assembly: InternalsVisibleTo("MeasureDD.Tests")]
+// [assembly: InternalsVisibleTo("MeasureDD.Tests")]
 
 namespace MeasureDD.Requests;
 
