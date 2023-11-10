@@ -93,7 +93,7 @@ public class UnitTest_ReadRequests
    public void CheckUse_WriteRequest()
    {
      string? output;
-     string filePath = Context.GetTestFilePath();
+     string filePath = Context.GetTestFilePath(Context.DocumentType.Requests);
 
      if (Path.Exists(filePath))
      {
@@ -112,4 +112,17 @@ public class UnitTest_ReadRequests
      Assert.Equal(rq1.ToString(), (RequestHandler.ReadRequestString(output.Split("\t"))).ToString());
      }
    }
+}
+
+
+public class UnitTest_Context
+{
+  [Fact]
+  public void Test_GetPath()
+  {
+    Assert.EndsWith(@"files/requests.txt", Context.GetTestFilePath(Context.DocumentType.Requests));
+    Assert.EndsWith(@"files/template.docx", Context.GetTestFilePath(Context.DocumentType.Template));
+    // Assert.IsType<ArgumentOutOfRangeException>(Context.GetTestFilePath(Context.DocumentType.None));
+  }
+
 }

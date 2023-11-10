@@ -4,13 +4,23 @@ public static class Context
 {
   // public const string docPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
   //  const string docPath = @"C:\Users\bartd\Documents\0. Files\SoftwareDevelopment\Projects\MeasureDD\";
-  static string docPath = GetProjectRoot();
-  const string filePath = @"files/requests.txt" ;
-  const string testFilePath = @"MeasureDD.Tests/files/requests.txt";
-
-  public static string GetTestFilePath()
+  static string rootPath = GetProjectRoot();
+  const string filePath = @"files/" ;
+  const string testFilePath = @"MeasureDD.Tests/files/";
+  public enum DocumentType
   {
-    return Path.Combine(docPath, testFilePath);
+    Requests,
+    Template
+  }
+
+  public static string GetTestFilePath(DocumentType doctype)
+  {
+    return Path.Combine(rootPath, testFilePath, doctype switch 
+        {
+        DocumentType.Requests => "requests.txt",
+        DocumentType.Template => "template.docx",
+        _ => throw new ArgumentOutOfRangeException(nameof(doctype), $"Not excpeted DocumentType value: {doctype}"),
+        });
   }
 
   /*
