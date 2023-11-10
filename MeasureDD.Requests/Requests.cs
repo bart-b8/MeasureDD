@@ -9,6 +9,7 @@ namespace MeasureDD.Requests;
 
 public class Request
 {
+  // TODO(BD): underscored names should be private or protected members or properties.
   internal int _id;
   public Contact _contact;
   public bool _numbersAreChecked;
@@ -40,6 +41,7 @@ public record struct Contact
   public required Adress Adress { get; set; } 
   public required string Sailclub;
 
+  // TODO(BD): with default constructor 
   [SetsRequiredMembers]
   public Contact(string name, string email, Adress adress, string sailclub)
   {
@@ -139,6 +141,7 @@ public static class RequestHandler
     }
   }
 
+  /*
   public static IEnumerable<Request> GetRequests()
   {
     string? line;
@@ -150,4 +153,5 @@ public static class RequestHandler
       }
     }
   }
+  */
 }
