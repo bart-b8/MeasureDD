@@ -10,7 +10,8 @@ public static class Context
   public enum DocumentType
   {
     Requests,
-    Template
+    Template,
+    TestPdf
   }
 
   public static string GetTestFilePath(DocumentType doctype)
@@ -19,6 +20,7 @@ public static class Context
         {
         DocumentType.Requests => "requests.txt",
         DocumentType.Template => "template.docx",
+        DocumentType.TestPdf => "test.pdf",
         _ => throw new ArgumentOutOfRangeException(nameof(doctype), $"Not excpeted DocumentType value: {doctype}"),
         });
   }

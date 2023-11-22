@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Office.Interop.Word;
+
 // using System.Runtime.CompilerServices;
 
 // using MeasureDD;
@@ -139,6 +141,29 @@ public static class RequestHandler
     {
       file.WriteLine(rq.ToString());
     }
+  }
+
+  public static void PrintCertPdf(Request rq)
+  {
+    // First version: quick and dirty experiment with chenging text of creating pdf file
+
+    // dynamic wordApp = Activator.CreateInstance(Type.GetTypeFromProgID("Word.Application"));
+    Application wordApp = new Application();
+    // wordApp.Visible = true;
+
+    Document doc = wordApp.Documents.Open(Context.GetTestFilePath(Context.DocumentType.Template));
+    // Document doc = wordApp.Documents.Open(@"./files/template.docx");
+
+    string bkmName = "bkm_name";
+    if (doc.Bookmarks.Exists(bkmName))
+    {
+      Microsoft.Office.Interop.Word.Range bookmarkRange = doc.Bookmarks[bkmName].Range;
+      bookmarkRange.Text = rq._contact.Name;
+    }
+
+    doc.ExportAsFixedFormat(Context.GetTestFilePath(Context.DocumentType.TestPdf), WdExportFormat.wdExportFormatPDF);
+    doc.Close();
+    wordApp.Quit();
   }
 
   /*

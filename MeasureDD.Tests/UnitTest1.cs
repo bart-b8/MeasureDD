@@ -112,6 +112,14 @@ public class UnitTest_ReadRequests
      Assert.Equal(rq1.ToString(), (RequestHandler.ReadRequestString(output.Split("\t"))).ToString());
      }
    }
+
+   [Fact]
+   public void CheckUse_PrintCertpdf()
+   {
+     RequestHandler.PrintCertPdf(rq1);
+     // this test should be improved. For now, it serves to run run the function and I will check the created document manually.
+     Assert.True(true);
+   }
 }
 
 
@@ -120,8 +128,9 @@ public class UnitTest_Context
   [Fact]
   public void Test_GetPath()
   {
-    Assert.EndsWith(@"files/requests.txt", Context.GetTestFilePath(Context.DocumentType.Requests));
-    Assert.EndsWith(@"files/template.docx", Context.GetTestFilePath(Context.DocumentType.Template));
+    Assert.EndsWith(@"MeasureDD.Tests/files/requests.txt", Context.GetTestFilePath(Context.DocumentType.Requests));
+    Assert.EndsWith(@"MeasureDD.Tests/files/template.docx", Context.GetTestFilePath(Context.DocumentType.Template));
+    Assert.EndsWith(@"MeasureDD.Tests/files/test.pdf", Context.GetTestFilePath(Context.DocumentType.TestPdf));
     // Assert.IsType<ArgumentOutOfRangeException>(Context.GetTestFilePath(Context.DocumentType.None));
   }
 
